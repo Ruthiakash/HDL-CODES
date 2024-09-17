@@ -1,0 +1,28 @@
+#program for basic logic gates in digital design 
+                                   
+module basic_gates(a,b,y0,y1,y2,y3,y4,y5,y6);					
+input a,b;
+output y0,y1,y2,y3,y4,y5,y6;
+assign y0=a&b;   //and gate
+assign y1=a|b;   //or gate
+assign y2=~a;     //not gate
+assign y3=~(a&b); //nand gate
+assign y4=~(a|b); //nor gate 
+assign y5=a^b;    //xor gate 
+assign y6=~(a^b); //xnor gate 
+end
+endmodule 
+
+#testbench
+module basic_gates_tb();
+reg a,b;
+wire y0,y1,y2,y3,y4,y5,y6;
+basic_gates bgi(a,b,y0,y1,y2,y3,y4,y5,y6);
+initial
+begin
+a=1'b0;b=1'b0;#250;
+a=1'b0;b=1'b1;#250;
+a=1'b1;b=1'b0;#250;
+a=1'b1;b=1'b1;#250;
+end
+endmodule
